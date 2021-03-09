@@ -44,3 +44,50 @@ def reverse_complement(dna[::-1]): #gives the reverse complement of DNA
             amino= amino+ rna2codon(triplets[ 3*i:3*i+3])
         return amino
     return rna2codons(triplets)
+
+#Rna protein code
+
+RNA
+genetic_code = {
+    'UUU': 'F', 'UUC': 'F', 'UUA': 'L', 'UUG': 'L', 'CUU': 'L', 'CUC': 'L', 'CUA': 'L', 'CUG': 'L',
+    'AUU': 'I', 'AUC': 'I', 'AUA': 'I', 'AUG': 'M', 'GUU': 'V', 'GUC': 'V', 'GUA': 'V', 'GUG': 'V',
+    'UCU': 'S', 'UCC': 'S', 'UCA': 'S', 'UCG': 'S', 'CCU': 'P', 'CCC': 'P', 'CCA': 'P', 'CCG': 'P',
+    'ACU': 'T', 'ACC': 'T', 'ACA': 'T', 'ACG': 'T', 'GCU': 'A', 'GCC': 'A', 'GCA': 'A', 'GCG': 'A',
+    'UAU': 'Y', 'UAC': 'Y', 'UAA': '*', 'UAG': '*', 'CAU': 'H', 'CAC': 'H', 'CAA': 'Q', 'CAG': 'Q',
+    'AAU': 'N', 'AAC': 'N', 'AAA': 'K', 'AAG': 'K', 'GAU': 'D', 'GAC': 'D', 'GAA': 'E', 'GAG': 'E',
+    'UGU': 'C', 'UGC': 'C', 'UGA': '*', 'UGG': 'W', 'CGU': 'R', 'CGC': 'R', 'CGA': 'R', 'CGG': 'R',
+    'AGU': 'S', 'AGC': 'S', 'AGA': 'R', 'AGG': 'R', 'GGU': 'G', 'GGC': 'G', 'GGA': 'G', 'GGG': 'G',
+}
+
+
+
+def source_rna(protein):
+    count = 0  # set count to zero
+    for key in genetic_code.keys():
+        
+        if genetic_code[key] in protein:
+            count += 1
+        
+        elif genetic_code[key] == '*':
+            count += len(protein)
+    
+    return count % 1000000
+
+
+
+print(source_rna("MA"))
+#splice Rna
+
+def splice(dna,intron_list):
+
+
+rna = dna2rna()
+
+
+
+for strands in intron_list:
+
+while strands in rna:
+rna = rna.replace(strand,"")
+
+return rna
